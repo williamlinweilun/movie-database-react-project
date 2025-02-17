@@ -1,13 +1,15 @@
 /* movies.css */
 .movies-container {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(150px, 1fr));
-  gap: 1rem;
+  /* display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr)); */
+  /* gap: 1rem;
   padding: 1rem;
-  justify-content: center;
+  justify-content: center; */
+  background-color: #030640;
 }
 
 .movie-card {
+  width: 200px;
   background: #222;
   color: white;
   padding: 15px;
