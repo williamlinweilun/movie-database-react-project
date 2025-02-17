@@ -10,7 +10,9 @@ function MovieCard({ movie }) {
       <div className="movie-info">
         <p className="movie-title">{movie.title}</p>
         <p className="movie-rating">⭐ {movie.vote_average.toFixed(1)}</p>
-        <p className="movie-details">⏳ {movie.runtime} min</p>
+        <p className="movie-details">
+          {movie.runtime && <p>⏳ Duration: {movie.runtime} minutes</p>}
+        </p>
         <p className="movie-details">📅 {movie.release_date}</p>
       </div>
     </div>

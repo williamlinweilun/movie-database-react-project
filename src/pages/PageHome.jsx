@@ -13,11 +13,14 @@ function PageHome() {
   }, []);
   // return <NowPlayingMovies />;
   return (
-    <div className="movies-container">
-      {nowPlayingMovies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
+    <>
+      <h2> Now playing</h2>
+      <div className="movies-container">
+        {nowPlayingMovies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    </>
   );
 }
 
