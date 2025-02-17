@@ -1,7 +1,11 @@
-import React from "react";
+import "./Footer.css";
 
 function Footer() {
-  return <h4>Footer</h4>;
+  return (
+    <footer>
+      <h3>FilmZone</h3>
+    </footer>
+  );
 }
 
 export default Footer;
