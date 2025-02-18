@@ -1,0 +1,19 @@
+.hero {
+  height: fit-content;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 800px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h2 {
+  border-bottom: 3px solid #b57690;
+  padding: 1rem;
+}
