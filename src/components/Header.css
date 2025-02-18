@@ -1,5 +1,9 @@
 header {
-  background-color: rgb(122, 222, 134);
+  background-color: #04073f;
   color: #fff;
   width: 100%;
+}
+
+header a {
+  color: #fff;
 }

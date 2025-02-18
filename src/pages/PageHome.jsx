@@ -6,8 +6,10 @@ import {
   getPopularMovies,
 } from "../utils/api";
 import MovieCard from "../components/MovieCard";
+import Hero from "../components/Hero";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./PageHome.css";
 
 function PageHome() {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
@@ -23,7 +25,13 @@ function PageHome() {
 
     getTopRatedMovies().then((data) => setTopRated(data.results));
     getUpcomingMovies().then((data) => setUpcoming(data.results));
-    getPopularMovies().then((data) => setPopular(data.results));
+
+    getPopularMovies()
+      .then((data) => {
+        console.log("Full popular movies list:", data.results); // Log the full list
+        setPopular(data.results);
+      })
+      .catch((error) => console.error("Error fetching popular movies:", error));
   }, []);
 
   const responsive = {
@@ -48,6 +56,10 @@ function PageHome() {
 
   return (
     <>
+      <div className="hero">
+        <Hero />
+      </div>
+
       <h2> Now playing</h2>
       <div className="movies-container">
         {/* {nowPlayingMovies.map((movie) => (
