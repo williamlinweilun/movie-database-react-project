@@ -18,7 +18,7 @@ function PageFavorite() {
         <div>
           {favoriteMovies.map((movie) => (
             // <li key={movie.id}>{movie.title}</li>
-            <MovieCard movie={movie} />
+            <MovieCard movie={movie} key={movie.id} />
           ))}
         </div>
       )}
