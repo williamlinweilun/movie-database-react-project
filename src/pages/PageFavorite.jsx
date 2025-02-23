@@ -17,7 +17,7 @@ function PageFavorite() {
       </div>
       {favoriteMovies.length === 0 ? (
         <div className="no-favorites">
-          <p>No favorites added yet.</p>
+          <p>Sorry you have no favorite movies. Try adding some from the movie section...</p>
         </div>
       ) : (
         <div className="favorite-movie-cards">

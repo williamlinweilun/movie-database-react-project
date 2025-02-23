@@ -1,3 +1,4 @@
+import "./PageAbout.css";
 import React from "react";
 
 function PageAbout() {
