@@ -5,6 +5,7 @@
   padding: 0 1rem;
   box-sizing: border-box;
   position: relative;
+  
 
   nav {
     position: fixed;
@@ -20,7 +21,7 @@
     gap: 1.5rem;
     background-color: #030640e9;
     transition: 0.5s;
-    transform: translateY(-100vh);
+    transform: translateY(-150vh);
   }
 
   .responsive_nav {
@@ -50,7 +51,7 @@ ul {
   color: #bf7381;
   visibility: visible;
   opacity: 1;
-  width: 2.5rem;
+  width: 2rem;
   height: auto;
 
   svg {

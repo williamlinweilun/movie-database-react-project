@@ -1,10 +1,11 @@
+import logo from "../images/filmzone-logo.svg";
 import { NavLink} from "react-router-dom";
 import Navbar from "./Navbar";
 import "./Header.css";
 function Header() {
   return (
     <header>
-      <h1><NavLink to="/">FilmZone</NavLink></h1>
+      <NavLink to="/"><img src={logo} alt="Filmzone Logo" /></NavLink>
       <Navbar />
     </header>
   );

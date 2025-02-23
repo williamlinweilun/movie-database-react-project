@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 517.65 361.35">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 330px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #bf7381;
+        font-family: Gigalypse-Regular, Gigalypse;
+      }
+
+      .cls-2 {
+        font-size: 68px;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(0 280.5)"><tspan x="0" y="0">F</tspan></text>
+  <text class="cls-2" transform="translate(209 201.24)"><tspan x="0" y="0">ilmzone</tspan></text>
+</svg>
