@@ -8,10 +8,11 @@ import PageFavorite from "../pages/PageFavorite";
 import PageNotFound from "../pages/PageNotFound";
 import PageMovieDetails from "../pages/PageMovieDetails";
 import { GlobalProvider } from "../context/GlobalContext";
+import { APP_FOLDER_NAME } from "../globals.js";
 
 function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={`/${APP_FOLDER_NAME}`}>
       <GlobalProvider>
         <Header />
         <Routes>
