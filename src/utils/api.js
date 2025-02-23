@@ -38,11 +38,35 @@ export const getMovieDetails = (movieId) => {
       }
       return response.json();
     })
+    .then((data) => {
+      // Fetch release dates to get certification
+      return fetch(
+        `${BASE_URL}/movie/${movieId}/release_dates?api_key=${API_KEY}&language=en-US`,
+        options
+      )
+        .then((releaseResponse) => {
+          if (!releaseResponse.ok) {
+            throw new Error("Failed to fetch release dates");
+          }
+          return releaseResponse.json();
+        })
+        .then((releaseData) => {
+          // Find the certification for the US region
+          const usRelease = releaseData.results.find(
+            (result) => result.iso_3166_1 === "US"
+          );
+          const certification =
+            usRelease?.release_dates[0]?.certification || "Not Rated"; // Default to "Not Rated"
+          
+          return { ...data, certification };
+        });
+    })
     .catch((error) => {
       console.error("Error fetching movie details:", error);
       throw error;
     });
 };
+
 // get the cast list
 export const getMovieCredits = (movieId) => {
   return fetch(

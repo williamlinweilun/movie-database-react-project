@@ -28,6 +28,12 @@ function PageMovieDetails() {
     return <div className="text-center text-white">Loading...</div>;
   }
 
+  const formatReleaseDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', options);
+  }
+
   const carouselCast = {
     responsive: {
       desktop: {
@@ -72,47 +78,57 @@ function PageMovieDetails() {
    
     <main className="page-wrapper">
 
-        {/* Movie Title */}
-        <h1 className="movie-title">
-          {movie.title}
-        </h1>
+      <section className="movie-content">
 
         <img 
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           alt={movie.title}
           className="movie-poster"/>
-
-      <section className="movie-content">
-
-        <p>
-          <span className="rating"> {Math.round(movie.vote_average * 10)}%</span>
-        </p>
+        
 
           <div className="movie-details">
-          <p>
-            {/* <span className="bold-text">Release Date:</span>  */}
-            {movie.release_date}
-          </p>
+
+            {/* Movie Title */}
+            <h1 className="movie-title">
+              {movie.title}
+            </h1>
+
+              <div className="release-runtime-genre">
+                <p>
+                  <span className="bold-text">Release Date:</span> {formatReleaseDate(movie.release_date)}
+                </p>
 
 
-          <p>
-            {/* <span className="bold-text">Runtime:</span>  */}
-            {formatRuntime(movie.runtime)}
-          </p>
+                <p>
+                  <span className="bold-text">Runtime:</span> {formatRuntime(movie.runtime)}
+                </p>
 
-          <p>
-            {/* <span className="bold-text">Genres:</span>  */}
-            {movie.genres.map((g) => g.name).join(", ")}
-          </p>
+                <p>
+                  <span className="bold-text">Genres:</span> {movie.genres.map((g) => g.name).join(", ")}
+                </p>
+
+              </div>
+
+            <div className="rating-container">
+              <p>
+                <span className="rating"> {Math.round(movie.vote_average * 10)}%</span>
+              </p>
+
+              <p>
+                <span className="maturity-rating"> {movie.certification || "NR"}</span>
+              </p>
+            </div>
+
           </div>
-        
-        <p className="">{movie.overview}</p>
+          
 
-
-        <h3 className="cast">Cast</h3>
       </section>
+          <div>
+            <p className="movie-summary">{movie.overview}</p>
+          </div>    
 
       <section>
+        <h3 className="cast">Cast</h3>
 
         <Carousel {...carouselCast}>
           {cast.map((actor) => (
