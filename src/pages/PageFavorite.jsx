@@ -1,3 +1,4 @@
+import "./PageFavorite.css";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import MovieCard from "../components/MovieCard";
@@ -10,15 +11,21 @@ function PageFavorite() {
   }
 
   return (
-    <div>
-      <h2>My Favorite Movies</h2>
+    <div className="favorites-page-wrapper">
+      <div className="backdrop-favorites">
+        <h1>My Favorite Movies</h1>
+      </div>
       {favoriteMovies.length === 0 ? (
-        <p>No favorites added yet.</p>
+        <div className="no-favorites">
+          <p>Sorry you have no favorite movies. Try adding some from the movie section...</p>
+        </div>
       ) : (
-        <div>
+        <div className="favorite-movie-cards">
           {favoriteMovies.map((movie) => (
             // <li key={movie.id}>{movie.title}</li>
-            <MovieCard movie={movie} key={movie.id} />
+            <div className="individual-movie-wrapper">
+              <MovieCard movie={movie} key={movie.id} />
+            </div>
           ))}
         </div>
       )}
