@@ -6,7 +6,6 @@ function Header() {
   return (
     <header>
       <NavLink to="/"><img src={logo} alt="Filmzone Logo" /></NavLink>
-      {/* <h1><NavLink to="/">FilmZone</NavLink></h1> */}
       <Navbar />
     </header>
   );

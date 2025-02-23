@@ -39,19 +39,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0;
+    gap: .5rem;
 
     .tmdb {
-      max-width: 7rem;
+      max-width: 8rem;
       margin: 0;
       padding: 0;
     }
 
     p {
       font-size: 1rem;
-      width: 50%;
+      width: 30%;
       margin: 0;
       padding: 0;
+      font-style: normal;
     }
   }
 }
