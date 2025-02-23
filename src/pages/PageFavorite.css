@@ -1,0 +1,64 @@
+.favorites-page-wrapper {
+  position: relative;
+  background-image: url("../images/favorite-backdrop.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  z-index: 1;
+  .backdrop-favorites {
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      color: white;
+      margin-top: 15%;
+    }
+  }
+
+  @media screen and (min-width: 51.25rem) {
+    .backdrop-favorites {
+      height: 25vh;
+      
+      h1 {
+        margin-top: 5%;
+        font-size: 3.2rem;
+      }
+    }
+  }
+}
+
+.favorites-page-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #03064083;
+  z-index: -1;
+}
+
+/* Working on how to display movie cards..... */
+
+.favorite-movie-cards {
+  max-width: fit-content;
+  margin: 0 auto 1rem auto;
+
+  .individual-movie-wrapper {
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 51.25rem) {
+  .favorite-movie-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0 auto;
+  }
+}
