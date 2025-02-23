@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getMovieDetails, getMovieCredits } from "../utils/api.js"; // Import fetch function
 import { formatRuntime } from "../utils/toolbelt.js";
 import FavoriteButton from "../components/FavoriteButton.jsx";
+import Carousel from "react-multi-carousel";
+import 'react-multi-carousel/lib/styles.css';
 
 function PageMovieDetails() {
   const { id } = useParams(); // Get movie ID from URL
@@ -18,7 +20,7 @@ function PageMovieDetails() {
       .catch((error) => console.error(error));
 
     getMovieCredits(id)
-      .then((data) => setCast(data.cast.slice(0, 5))) // Get top 5 cast members
+      .then((data) => setCast(data.cast.slice(0, 10))) // Get top 5 cast members
       .catch((error) => console.error(error));
   }, [id]);
 
@@ -26,45 +28,113 @@ function PageMovieDetails() {
     return <div className="text-center text-white">Loading...</div>;
   }
 
+  const formatReleaseDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', options);
+  }
+
+  const carouselCast = {
+    responsive: {
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 10,
+        slidesToSlide: 4, 
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 3,
+        slidesToSlide: 3, 
+        partialVisible: true,
+        centerMode: true,
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 }, 
+        items: 2, 
+        slidesToSlide: 1.5, 
+        partialVisible: true,
+        centerMode: true,
+      },
+    },
+};
+
   return (
-    <div className="text-white">
-      <div className="relative">
+
+    // FIXME: FIX ALL EMPTY CLASSNAMES OR REMOVE
+    <body>
+      <section>
         {/* Movie Backdrop */}
         <img
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           alt={movie.title}
-          className="w-full h-[500px] object-cover"
+          className="movie-backdrop"
         />
-        {/* Movie Title */}
-        <h1 className="absolute bottom-5 left-5 text-4xl font-bold bg-black bg-opacity-50 px-3 py-1">
-          {movie.title}
-        </h1>
-      </div>
 
-      <div className="p-6">
-        <h2 className="text-2xl font-bold">
+        {/* Favorite Button */}
+        <h2 className="favorite">
           <FavoriteButton movie={movie} />
         </h2>
-        <p className="text-gray-400">{movie.overview}</p>
-        <p>
-          <strong>Release Date:</strong> {movie.release_date}
-        </p>
-        <p>
-          <strong>Rating:</strong> {movie.vote_average} / 10
-        </p>
-        <p>
-          <strong>Runtime:</strong> {formatRuntime(movie.runtime)}
-        </p>
-        <p>
-          <strong>Genres:</strong> {movie.genres.map((g) => g.name).join(", ")}
-        </p>
-      </div>
+      </section>
+   
+    <main className="page-wrapper">
 
-      <div className="mt-5">
-        <h3 className="text-2xl font-semibold">Cast</h3>
-        <div className="flex gap-5 mt-3">
+      <section className="movie-content">
+
+        <img 
+          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          alt={movie.title}
+          className="movie-poster"/>
+        
+
+          <div className="movie-details">
+
+            {/* Movie Title */}
+            <h1 className="movie-title">
+              {movie.title}
+            </h1>
+
+              <div className="release-runtime-genre">
+                <p>
+                  <span className="bold-text">Release Date:</span> {formatReleaseDate(movie.release_date)}
+                </p>
+
+
+                <p>
+                  <span className="bold-text">Runtime:</span> {formatRuntime(movie.runtime)}
+                </p>
+
+                <p>
+                  <span className="bold-text">Genres:</span> {movie.genres.map((g) => g.name).join(", ")}
+                </p>
+
+              </div>
+
+            <div className="rating-container">
+              <p>
+                <span className="rating"> {Math.round(movie.vote_average * 10)}%</span>
+              </p>
+
+              <p>
+                <span className="maturity-rating"> {movie.certification || "NR"}</span>
+              </p>
+            </div>
+
+          </div>
+          
+
+      </section>
+          <div>
+            <p className="movie-summary">{movie.overview}</p>
+          </div>    
+
+      <section>
+        <h3 className="cast">Cast</h3>
+
+        <Carousel {...carouselCast}>
           {cast.map((actor) => (
-            <div key={actor.id} className="text-center">
+            
+            <div key={actor.id} className="cast-card">
+              
               <img
                 src={
                   actor.profile_path
@@ -72,15 +142,19 @@ function PageMovieDetails() {
                     : "https://via.placeholder.com/200"
                 }
                 alt={actor.name}
-                className="w-24 h-24 object-cover rounded-full border border-gray-500"
-              />
-              <p className="mt-2 font-semibold">{actor.name}</p>
-              <p className="text-gray-400 text-sm">as {actor.character}</p>
+                className="actor-photo"/>
+
+              <p className="actor-name">{actor.name}</p>
+              <p className="character-name">as {actor.character}</p>
+
             </div>
+
           ))}
-        </div>
-      </div>
-    </div>
+        </Carousel>
+      </section>
+    </main>
+    </body>
+
   );
 }
 
