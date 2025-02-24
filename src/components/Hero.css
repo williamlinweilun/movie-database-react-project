@@ -1,0 +1,21 @@
+a {
+  font-weight: 800;
+  color: #bf7381;
+}
+
+.hero a {
+  color: #fff;
+}
+
+.hero h2 {
+  border: none;
+}
+
+.heroMovieDes {
+  display: none;
+}
+@media screen and (min-width: 51.25rem) {
+  .heroMovieDes {
+    display: block;
+  }
+}

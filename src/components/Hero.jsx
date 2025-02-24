@@ -5,9 +5,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { getPopularMovies } from "../utils/api";
+import { useNavigate } from "react-router-dom";
+import "./Hero.css";
 
 const Hero = () => {
   const [popularMovies, setPopularMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPopularMovies()
@@ -28,18 +31,33 @@ const Hero = () => {
       pagination={{ clickable: true }}
       autoplay={{ delay: 3000 }}
       loop={false}
+      breakpoints={{
+        640: { slidesPerView: 1 }, // Mobile
+        768: { slidesPerView: 1 }, // Tablet
+        1024: { slidesPerView: 1 }, // Desktop
+      }}
     >
       {popularMovies.map((movie) => (
         <SwiperSlide key={movie.id}>
-          <div className="relative w-full h-[500px]">
+          <div
+            className="relative w-full h-auto cursor-pointer"
+            onClick={() => navigate(`/movie/${movie.id}`)}
+          >
+            {/* Backdrop Image */}
             <img
               src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               alt={movie.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover brightness-75"
             />
-            <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent p-5 text-white w-full">
-              <h2 className="text-2xl font-bold">{movie.title}</h2>
-              <p className="text-sm">{movie.overview.substring(0, 100)}...</p>
+
+            {/* Overlay with Movie Title & Release Date */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-6 bg-gradient-to-b from-black/70 via-black/40 to-black/70 heroMovieDes">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+                {movie.title}
+              </h2>
+              <p className="text-sm sm:text-md md:text-lg mt-2">
+                {new Date(movie.release_date).toDateString()}
+              </p>
             </div>
           </div>
         </SwiperSlide>
