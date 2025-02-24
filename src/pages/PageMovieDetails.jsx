@@ -61,24 +61,18 @@ function PageMovieDetails() {
   return (
     // FIXME: FIX ALL EMPTY CLASSNAMES OR REMOVE
     <>
-      <section>
-        {/* Movie Backdrop */}
-
-        <img
-          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-          alt={movie.title}
-          className="movie-backdrop"
-        />
-
-        {/* Favorite Button */}
-        <h2 className="favorite">
-          <FavoriteButton movie={movie} />
-        </h2>
-      </section>
-
-      <main className="page-wrapper">
+      <main
+        className="page-wrapper"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <section className="movie-content">
-          <div>
+          <div className="movie-favorite">
+            <FavoriteButton movie={movie} />
             <img
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.title}
@@ -86,7 +80,7 @@ function PageMovieDetails() {
             />
           </div>
 
-          <div className="movie-details">
+          <div className="movie-details-div ">
             {/* Movie Title */}
             <h1 className="movie-title">{movie.title}</h1>
 
@@ -110,24 +104,23 @@ function PageMovieDetails() {
             <div className="rating-container">
               <p>
                 <span className="rating">
-                  {" "}
                   {Math.round(movie.vote_average * 10)}%
                 </span>
               </p>
 
               <p>
                 <span className="maturity-rating">
-                  {" "}
                   {movie.certification || "NR"}
                 </span>
               </p>
             </div>
+            <section>
+              <p className="movie-summary">{movie.overview}</p>
+            </section>
           </div>
         </section>
-        <section>
-          <p className="movie-summary">{movie.overview}</p>
-        </section>
-        <section>
+
+        <section className="cast-list">
           <h3 className="cast">Cast</h3>
 
           <Carousel {...carouselCast}>
