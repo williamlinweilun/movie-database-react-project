@@ -20,7 +20,6 @@ function PageHome() {
   useEffect(() => {
     getNowPlayingMovies().then((data) => {
       setNowPlayingMovies(data.results);
-      console.log(data);
     });
 
     getTopRatedMovies().then((data) => setTopRated(data.results));
@@ -28,7 +27,6 @@ function PageHome() {
 
     getPopularMovies()
       .then((data) => {
-        console.log("Full popular movies list:", data.results); // Log the full list
         setPopular(data.results);
       })
       .catch((error) => console.error("Error fetching popular movies:", error));
@@ -60,7 +58,7 @@ function PageHome() {
         <Hero />
       </div>
 
-      <h2> Now playing</h2>
+      <h2> Now Playing</h2>
       <div className="movies-container">
         <Carousel responsive={responsive}>
           {nowPlayingMovies.map((movie) => (
