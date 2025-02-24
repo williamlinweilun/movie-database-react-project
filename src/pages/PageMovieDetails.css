@@ -8,11 +8,21 @@ p {
 .movie-backdrop {
   max-width: 100%;
   margin-top: 5rem;
-  opacity: 50%;
+  opacity: 15%;
+  position: fixed;
 }
 
-/* FIXME: */
-.favorite {
+.favorite-container {
+    display: relative;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.favorite-button {
+    position: absolute;
+    top: 6.2rem;
+    left: 2rem;
 }
 
 .movie-poster {
@@ -20,6 +30,7 @@ p {
   margin: 0 auto;
   display: block;
   border-radius: 1rem;
+  margin-top: 3rem;
 }
 
 .movie-title {
@@ -112,6 +123,8 @@ p {
   border-radius: 1rem;
   padding: 0;
   width: 9.7rem;
+  height: 20rem;
+  margin-bottom: 2rem;
 }
 
 .actor-photo {
@@ -141,20 +154,34 @@ p {
   padding: 0 0.5rem 0;
 }
 
-@media (min-width: 31.25rem) {
+@media (min-width: 31.25em) {
   .movie-poster {
     width: 18.75rem;
     height: auto;
     transition: all 0.3s ease;
   }
-}
 
-@media (min-width: 40em) {
+  .favorite-container{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .favorite-button {
+    position: absolute;
+    top: 6.3rem;
+    left: 15rem;
+    }
+}
+ 
+@media (min-width: 40em) {  
   .movie-poster {
     width: 18.75rem;
     height: auto;
   }
 }
+
 
 @media (min-width: 51.25rem) {
   .movie-content {

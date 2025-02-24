@@ -9,8 +9,33 @@
 }
 
 .movie-card {
-  width: 200px;
-  background: #222;
+  position: relative;
+  width: 25rem;
+  /* background: #222; */
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.movie-card img {
+  width: 75%;
+  height: auto;
+  border-radius: 3rem;
+}
+
+.movie-card:hover {
+  transform: scale(1);
+}
+
+
+.movie-card::before {
+  content: '';
+  position: absolute;
+  width: 25rem;
   color: white;
   padding: 15px;
   border-radius: 10px;
@@ -19,18 +44,47 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.movie-card:hover {
-  transform: scale(1.05);
-}
-
 .movie-card img {
   width: 75%;
   height: auto;
   border-radius: 10px;
 }
 
+.movie-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1; /* Make sure overlay is above image */
+}
+
+.movie-card:hover::before {
+  opacity: 1;
+}
+
 .movie-info {
-  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2; /* Ensure movie info appears above the overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.movie-card:hover .movie-info {
+  opacity: 1; /* Show the movie info when hovered */
 }
 
 .movie-title {
@@ -48,4 +102,54 @@
   font-size: 13px;
   color: #ccc;
   margin-top: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1; /* Make sure overlay is above image */
 }
+
+.movie-card:hover::before {
+  opacity: 1;
+}
+
+.movie-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-rating {
+  font-size: 14px;
+  color: #facc15;
+  margin-top: 5px;
+}
+
+
+.movie-details {
+  font-size: 13px;
+  color: #ccc;
+  margin-top: 5px;
+}
+
+.movie-card:hover img {
+  transform: scale(1.05);
+}
+
