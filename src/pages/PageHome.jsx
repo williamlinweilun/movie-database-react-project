@@ -88,7 +88,7 @@ function PageHome() {
           ))}
         </Carousel>
       </div>
-      <h2> Up comming</h2>
+      <h2>Upcoming</h2>
       <div className="movies-container">
         <Carousel responsive={responsive}>
           {upcoming.map((movie) => (
