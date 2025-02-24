@@ -14,6 +14,22 @@
   object-fit: cover;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  color: #b57690;
+}
+/* Change bullet color */
+.swiper-pagination-bullet {
+  background-color: white !important; /* Change to desired color */
+  opacity: 0.5; /* Adjust transparency */
+}
+
+/* Active bullet (current slide) */
+.swiper-pagination-bullet-active {
+  background-color: #b57690 !important; /* Change to desired active color */
+  opacity: 1;
+}
+
 h2 {
   border-bottom: 3px solid #b57690;
   padding: 1rem;
