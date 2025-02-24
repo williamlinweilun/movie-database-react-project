@@ -14,8 +14,3 @@ a {
 .heroMovieDes {
   display: none;
 }
-@media screen and (min-width: 51.25rem) {
-  .heroMovieDes {
-    display: block;
-  }
-}
