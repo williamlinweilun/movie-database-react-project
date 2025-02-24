@@ -10,10 +10,18 @@ function MovieCard({ movie }) {
     return date.toLocaleDateString("en-US", options);
   };
 
+  // cut the string to certain numbers of characters
+  const truncateString = (str, num) => {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + "...";
+  };
+
   return (
     <>
       <div className="movie-card-wrapper">
-        <FavoriteButton movie={movie}  />
+        <FavoriteButton movie={movie} />
         <div className="movie-card-container">
           <Link to={`/movie/${movie.id}`}>
             <img
@@ -26,6 +34,9 @@ function MovieCard({ movie }) {
                 {(movie.vote_average * 10).toFixed(0)}%
               </p>
               <p className="movie-title">{movie.title}</p>
+              <p className="movie-card-summary">
+                {truncateString(movie.overview, 60)}
+              </p>
               <p className="movie-details">
                 {movie.runtime && <p>⏳ Duration: {movie.runtime} minutes</p>}
               </p>
@@ -34,7 +45,10 @@ function MovieCard({ movie }) {
               </p>
             </div>
           </Link>
-          </div>  
+        </div>
+        <Link to={`/movie/${movie.id}`}>
+          <button className="movie-more-button">more info</button>
+        </Link>
       </div>
     </>
   );
