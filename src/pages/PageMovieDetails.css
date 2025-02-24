@@ -123,6 +123,8 @@ p {
   border-radius: 1rem;
   padding: 0;
   width: 9.7rem;
+  height: 20rem;
+  margin-bottom: 2rem;
 }
 
 .actor-photo {
