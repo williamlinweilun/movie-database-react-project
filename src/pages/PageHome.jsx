@@ -60,7 +60,7 @@ function PageHome() {
         <Hero />
       </div>
 
-      <h2> Now playing</h2>
+      <h2> Now Playing</h2>
       <div className="movies-container">
         <Carousel responsive={responsive}>
           {nowPlayingMovies.map((movie) => (
