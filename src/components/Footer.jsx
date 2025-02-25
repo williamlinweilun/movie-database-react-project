@@ -1,4 +1,4 @@
-import logo from "../images/filmzone-logo.svg";
+import logo from "../images/logo.png";
 import "./Footer.css";
 
 function Footer() {
