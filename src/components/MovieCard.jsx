@@ -38,9 +38,6 @@ function MovieCard({ movie }) {
                 {truncateString(movie.overview, 60)}
               </p>
               <p className="movie-details">
-                {movie.runtime && <p>⏳ Duration: {movie.runtime} minutes</p>}
-              </p>
-              <p className="movie-details">
                 {formatReleaseDate(movie.release_date)}
               </p>
             </div>
