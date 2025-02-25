@@ -20,6 +20,7 @@ function PageHome() {
   useEffect(() => {
     getNowPlayingMovies().then((data) => {
       setNowPlayingMovies(data.results);
+
     });
 
     getTopRatedMovies().then((data) => setTopRated(data.results));
@@ -27,6 +28,7 @@ function PageHome() {
 
     getPopularMovies()
       .then((data) => {
+
         setPopular(data.results);
       })
       .catch((error) => console.error("Error fetching popular movies:", error));

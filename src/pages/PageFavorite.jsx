@@ -17,14 +17,16 @@ function PageFavorite() {
       </div>
       {favoriteMovies.length === 0 ? (
         <div className="no-favorites">
-          <p>Sorry you have no favorite movies. Try adding some from the movie section...</p>
+          <p>
+            Sorry you have no favorite movies. Try adding some from the movie
+            section...
+          </p>
         </div>
       ) : (
         <div className="favorite-movie-cards">
           {favoriteMovies.map((movie) => (
-            // <li key={movie.id}>{movie.title}</li>
-            <div className="individual-movie-wrapper">
-              <MovieCard movie={movie} key={movie.id} />
+            <div className="individual-movie-wrapper" key={movie.id}>
+              <MovieCard movie={movie} />
             </div>
           ))}
         </div>
