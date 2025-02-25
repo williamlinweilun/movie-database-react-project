@@ -1,5 +1,5 @@
 import "./PageAbout.css";
-import logo from "../images/filmzone-logo.svg";
+import logo from "../images/logo.png";
 import img from "../images/tmdb-logo.svg";
 import React from "react";
 
