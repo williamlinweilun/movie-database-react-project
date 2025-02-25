@@ -15,8 +15,8 @@
   gap: 0;
 
   img {
-    width: 45vw;
-    margin: 7rem auto 0 auto;
+    width: 50vw;
+    margin: 3rem auto;
     height: auto;
 
     @media screen and (min-width: 51.25rem) {
