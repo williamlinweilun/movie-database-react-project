@@ -15,7 +15,7 @@ const Hero = () => {
   useEffect(() => {
     getPopularMovies()
       .then((data) => {
-        console.log("Popular Movies:", data.results.slice(0, 3)); // Debugging
+        // console.log("Popular Movies:", data.results.slice(0, 3)); // Debugging
         setPopularMovies(data.results.slice(0, 3));
       })
       .catch((error) => console.error("Error fetching movies:", error));
