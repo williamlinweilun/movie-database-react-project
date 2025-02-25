@@ -130,7 +130,7 @@ function PageMovieDetails() {
                   src={
                     actor.profile_path
                       ? `${IMAGE_BASE_URL}${actor.profile_path}`
-                      : "https://via.placeholder.com/200"
+                      : ""
                   }
                   alt={actor.name}
                   className="actor-photo"
